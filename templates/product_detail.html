@@ -9,6 +9,7 @@
         <h4>{{ item.stocks }}</h4>
         <p> {{ item.description }} </p>
 
+        <a href="{% url 'product_update' item.slug %}">Edit this...</a>
     {% else %}
     {% endif %}
 {% endblock content %}

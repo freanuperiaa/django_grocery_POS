@@ -51,7 +51,6 @@ class ProductsDetailView(View):
 
 
 class ProductsCreateView(CreateView):
-
     template_name = 'create_product.html'
     model = Product
     fields = [
@@ -61,7 +60,6 @@ class ProductsCreateView(CreateView):
         'stocks',
         'no_purchases',
         'description',
-
     ]
 
     def form_valid(self,form):
@@ -70,3 +68,13 @@ class ProductsCreateView(CreateView):
         obj.slug = slugify(obj.name)
         obj.save()
         return redirect(obj.get_absolute_url())
+
+class ProductUpdateView(UpdateView):
+    template_name = 'update_product.html'
+    model = Product
+    fields = [
+        'category',
+        'price',
+        'stocks',
+        'description',
+    ]
