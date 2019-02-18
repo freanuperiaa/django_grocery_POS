@@ -1,0 +1,14 @@
+
+body, *:before, *:after {
+    background-color:grey;
+    font-weight:lighter;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+navbar-coy {
+    margin-top:150px;
+}
+
+coy-row1 {
+    margin-top:150px;
+}

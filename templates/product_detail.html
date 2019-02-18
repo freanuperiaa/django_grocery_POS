@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if item %}
+        <h2> {{ item.name }} </h2>
+        <h3> {{ item.category }} </h3>
+        <h3>Price: <i> {{ item.price }} </i> </h3>
+        <h4>{{ item.pub_date }}</h4>
+        <h4>{{ item.stocks }}</h4>
+        <p> {{ item.description }} </p>
+
+    {% else %}
+    {% endif %}
+{% endblock content %}
