@@ -22,13 +22,13 @@ class HomePageView(ListView):
     template_name = 'home.html'
 
     def get_queryset(self):
-        query_set = Product.objects.order_by('-no_purchases')[:3]
+        query_set = Product.objects.order_by('-no_purchases')[:5]
 
         return query_set
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
+        context['time'] = timezone.now()
         
         return context
 

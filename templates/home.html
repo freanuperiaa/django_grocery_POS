@@ -3,51 +3,43 @@
 
 
 {% block content %}
-    <div class="row coy-row1">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-                <h2>Home. (this is just a test)</h2>
 
+    <div class="row">
+        <div class="col-md-8">
+                <div class="jumbotron">
+                                <h1 class="display-4">Hello,User!</h1>
+                                <p class="lead">Welcome to Django Shop - Grocery System.</p>
+                                <hr class="my-4">
+                                <p>Today is {{ time|date:"F d, Y" }}</p>
+                                <p class="lead">
+                                        <a class="btn btn-primary btn-lg" href="#" role="button">Make a Transaction</a>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a class="btn btn-primary btn-lg" href="{% url 'products_list' %}" role="button">Show products</a>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a class="btn btn-primary btn-lg" href="{% url 'create_product' %}" role="button">Add a product</a>
+                                </p>
+                </div>
+        
         </div>
-        <div class="col-md-3"></div>
-    </div>
 
 
-    <div class="row coy-row1">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at tempus odio, at iaculis orci. Aliquam erat volutpat. Nullam et erat a purus maximus sollicitudin. Aliquam erat volutpat. Etiam venenatis non metus eget aliquet. Duis tempus nibh vel quam condimentum, aliquam gravida erat convallis. Pellentesque sagittis eget risus eu semper. Morbi eget ante eleifend, mattis metus et, imperdiet enim. Aliquam laoreet ligula quis nisi lobortis, at finibus orci pulvinar. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et
-                     malesuada fames ac turpis egestas. Praesent dictum tincidunt sodales. Sed eu purus porttitor turpis consequat rhoncus id vel nulla. In hac habitasse platea dictumst. Duis mollis turpis varius odio ornare tincidunt.</p>
+        <div class="col-md-4">
+        <div class="content-section">
+            <h3>User</h3>
+            <a class="text" href="#">Check My Profile</a>
+            <p class='text-muted'>The shop's top products</p>
+            <ul class="list-group">
+                {% for item in object_list %}
+                <li class="list-group-item list-group-item-light">
+                        {{ item.name }} ( {{item.no_purchases}} )
+                        <a href="{% url 'products_detail' item.slug %}">see more...</a>
 
+                </li>
+                {% endfor %}
+            </ul>
+            </p>
         </div>
-        <div class="col-md-3"></div>
+        </div>
     </div>
 
-
-    <div class="row coy-row1">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                    <h2>We sell products from these categories:</h2>
-                    <ul>
-                        {% for item in categories %}
-                            <li> {{ item.name }} </li>
-                        {% endfor %}
-                    </ul>
-    
-            </div>
-            <div class="col-md-3"></div>
-    </div>
-
-    <div class="row coy-row1">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                    <h2>Our top 3 products</h2>
-                    {% for item in object_list %}
-                    <h3> {{ item.name }} </h3>
-                    <h4> {{item.category}} </h4>
-                    <p> {{ item.no_purchases }} </p>
-                    {% endfor %}
-    
-            </div>
-            <div class="col-md-3"></div>
 {% endblock content %}

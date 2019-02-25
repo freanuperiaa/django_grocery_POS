@@ -1,28 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
+   
+
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            {% if object_list %}
-                {% for item in object_list %}
-                    <div class="col-md-3">
-                        <h3> {{ item.name }} </h3>
-                        <h4> {{ item.category }} </h4>
-                        <h5> {{ item.no_purchases }} </h5>
-                        <h4> {{ item.price }} </h4>
-                        <p>
-                            <a href="{% url 'products_detail' item.slug %}">Details...</a>
-                        </p>
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p>Oops! There seems to be nothing in the database.</p>
-            {% endif %}
-            
-        </div>
-
-
-        <div class="col-md-2"></div>
+            <table class="table table-striped">
+                    <thead class="">
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Stocks</th>
+                        <th scope="col">Number of Purchases</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in object_list %}
+                            <tr>
+                                <th scope="row"> {{ item.id }} </th>
+                                <td> {{ item.name }} </td>
+                                <td> {{ item.category }} </td>
+                                <td> {{ item.price }} </td>
+                                <td> {{ item.stocks }} </td>
+                                <td> {{ item.no_purchases }} </td>
+                                <td>
+                                    <a href="{% url 'products_detail' item.slug %}">See more...</a>
+                                </td>
+                            </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
     </div>
 {% endblock content %}

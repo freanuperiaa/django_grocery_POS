@@ -1,15 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% if item %}
-        <h2> {{ item.name }} </h2>
-        <h3> {{ item.category }} </h3>
-        <h3>Price: <i> {{ item.price }} </i> </h3>
-        <h4>{{ item.pub_date }}</h4>
-        <h4>{{ item.stocks }}</h4>
-        <p> {{ item.description }} </p>
+   <div class="row">
+       <div class="col-md-2"></div>
+       <div class="col-md-8 text-center">
+            {% if item %}
+                <h1> {{ item.name }} </h1>
+                <h2> {{ item.category }} </h2>
+                <h3>Price: <i> {{ item.price }} </i> </h3>
+                <h3>{{ item.pub_date }}</h3>
+                <h3>{{ item.stocks }}</h3>
+                <p class="lead"> {{ item.description }} </p>
 
-        <a href="{% url 'product_update' item.slug %}">Edit this...</a>
-    {% else %}
-    {% endif %}
+                <a class="btn btn-primary btn-lg" href="{% url 'product_update' item.slug %}" role="button">Edit this...</a>
+            {% else %}
+            {% endif %}
+       </div>
+       <div class="col-md-2"></div>
+   </div>
 {% endblock content %}

@@ -5,10 +5,17 @@ body, *:before, *:after {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-navbar-coy {
-    margin-top:150px;
+.navbar-coy {
+    margin-top:10px;
+    margin-bottom:100px;
+    height:70px;
 }
 
-coy-row1 {
-    margin-top:150px;
+
+.content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
 }

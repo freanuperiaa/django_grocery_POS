@@ -1,0 +1,13 @@
+Django-Grocery-POS
+functionalities of this system:
+1.) Serve as an inventory system
+2.) Enables empoyees to add and edit (only superuser can delete)
+3.) Have an account for each employee, with information
+4.) Employees can start a transaction, and every transaction can be ascribed to him
+5.) For each transaction, it will be linked to an employee (NOT NULL)
+                          and to a customer (if customer chooses so)
+
+tables to be added:
+    employee
+    customer
+    transaction (Foreignkey= customer, employee)
