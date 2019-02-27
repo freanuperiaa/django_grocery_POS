@@ -11,3 +11,9 @@ tables to be added:
     employee
     customer
     transaction (Foreignkey= customer, employee)
+
+
+
+additional notes:
+    - "products" & "add product" and "customers" & add customers should be merged as one
+                to reduce tabs on the nav bar
