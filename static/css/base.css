@@ -19,3 +19,14 @@ body, *:before, *:after {
     border-radius: 3px;
     margin-bottom: 20px;
 }
+
+.prodlist-addbtn {
+    float:right;
+    margin-top:-50px;
+    margin-bottom:25px;
+}
+
+.space-below {
+    margin-top:-60px;
+    margin-bottom:50px;
+}

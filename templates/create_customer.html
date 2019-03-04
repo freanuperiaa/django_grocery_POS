@@ -5,41 +5,50 @@
 {% block content %}
     <div class="row class space-below">
         <div class="col-md-4">
-            <h3 >Add a Product.</h3>
+            <h3 >Add a Customer.</h3>
         </div>
     </div>
 
     <div class="row">
         {% if user.is_authenticated %}
-            <div class="col-md-12">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
                 <form action="" method="POST">
                     {% csrf_token %}
                     <div class="form-row">
                             <div class="form-group col-md-6 mb-0">
-                                {{ form.name|as_crispy_field }}
+                                {{ form.first_name|as_crispy_field }}
                             </div>
                             <div class="form-group col-md-6 mb-0">
-                                {{ form.category|as_crispy_field }}
+                                {{ form.last_name|as_crispy_field }}
                             </div>
         
                         </div>
         
                         <div class="form-row">
                             <div class="form-group col-md-4 mb-0">
-                                {{ form.price|as_crispy_field }}
+                                {{ form.gender|as_crispy_field }}
                             </div>
-                            <div class="form-group col-md-4 mb-0">
-                                {{ form.stocks|as_crispy_field }}
-                            </div>
-                            <div class="form-group col-md-4 mb-0">
-                                {{ form.no_purchases|as_crispy_field }}
+                            <div class="form-group col-md-8 mb-0">
+                                {{ form.address|as_crispy_field }}
                             </div>
                         </div>
-                        {{ form.description|as_crispy_field }}
-    
+
+                        <div class="form-row">
+                            <div class="form-group col-md-3 mb-0"></div>
+                            <div class="form-group col-md-3 mb-1">
+                                {{ form.trxn_made|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-3 mb-1">
+                                    {{ form.mem_type|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-3 mb-0"></div>
+                        </div>
+                        
                     <input type="submit" value="Add!" class="btn btn-success">
                 </form>
             </div>
+            <div class="col-md-1"></div>
         {% else %}
             <div class="col-md-3"></div>
             <div class="col-md-6">

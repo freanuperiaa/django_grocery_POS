@@ -2,7 +2,7 @@ from django.shortcuts import render,get_object_or_404,redirect
 from django.template.defaultfilters import slugify
 from django.utils import timezone
 
-from .models import Product,Category
+from .models import Product,Category, Customer
 
 from django.views.generic import (
     TemplateView,
@@ -77,4 +77,35 @@ class ProductUpdateView(UpdateView):
         'price',
         'stocks',
         'description',
+    ]
+
+class CustomersListView(ListView):
+    template_name = 'customers_list.html'
+    
+    def get_queryset(self):
+        query_set = Customer.objects.order_by('first_name')
+        return query_set
+
+class CustomersCreateView(CreateView):
+    template_name = 'create_customer.html'
+    model = Customer
+    fields = [
+        'first_name', 'last_name',
+        'gender', 'address',
+        'trxn_made', 'mem_type'
+    ]
+
+
+    def form_valid(self,form):
+        obj = form.save(commit=False)
+        obj.mem_date = timezone.now()
+        obj.save()
+        return redirect('customers')
+
+class CustomersUpdateView(UpdateView):
+    template_name = 'customer_update.html'
+    model = Customer
+    fields = [
+        'first_name', 'last_name',
+        'gender', 'address', 'mem_type',
     ]

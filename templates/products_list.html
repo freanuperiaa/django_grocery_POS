@@ -2,7 +2,15 @@
 
 {% block content %}
    
-
+    {% if user.is_authenticated %}
+        <div class="row">
+            <div class="col-md-12">
+                <a class="btn btn-info btn-lg prodlist-addbtn" href="{% url 'create_product' %}">Add Product</a>
+            </div>
+        </div>
+    {% else %}
+        &nbsp;
+    {% endif %}
     <div class="row">
             <table class="table table-striped">
                     <thead class="">
@@ -25,7 +33,7 @@
                                 <td> {{ item.stocks }} </td>
                                 <td> {{ item.no_purchases }} </td>
                                 <td>
-                                    <a href="{% url 'products_detail' item.slug %}">See more...</a>
+                                    <a href="{% url 'products_detail' item.slug %}">details...</a>
                                 </td>
                             </tr>
                       {% endfor %}

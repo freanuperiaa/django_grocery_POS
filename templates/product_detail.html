@@ -12,7 +12,10 @@
                 <h3>{{ item.stocks }}</h3>
                 <p class="lead"> {{ item.description }} </p>
 
+                {% if user.is_authenticated %}
                 <a class="btn btn-primary btn-lg" href="{% url 'product_update' item.slug %}" role="button">Edit this...</a>
+                {% else %}
+                {% endif %}
             {% else %}
             {% endif %}
        </div>

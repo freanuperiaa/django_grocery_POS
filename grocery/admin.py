@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Product
+from .models import Category, Customer, Product
 
 # Register your models here.
 class CategoryAdmin(admin.ModelAdmin):
@@ -14,3 +14,6 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ['category', 'price', 'stocks']
 
 admin.site.register(Product)
+
+
+admin.site.register(Customer)

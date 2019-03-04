@@ -5,22 +5,41 @@
 {% block content %}
 
     <div class="row">
+        {% if user.is_authenticated %}
         <div class="col-md-8">
                 <div class="jumbotron">
-                                <h1 class="display-4">Hello,User!</h1>
+                                <h1 class="display-4">Hello, {{ user.first_name }}!</h1>
                                 <p class="lead">Welcome to Django Shop - Grocery System.</p>
                                 <hr class="my-4">
                                 <p>Today is {{ time|date:"F d, Y" }}</p>
-                                <p class="lead">
+                                <p class="lead text">
                                         <a class="btn btn-primary btn-lg" href="#" role="button">Make a Transaction</a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a class="btn btn-primary btn-lg" href="{% url 'products_list' %}" role="button">Show products</a>
+                                        <a class="btn btn-primary btn-lg" href="{% url 'products_list' %}" role="button">Products</a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a class="btn btn-primary btn-lg" href="{% url 'create_product' %}" role="button">Add a product</a>
+                                        <a class="btn btn-primary btn-lg" href="{% url 'customers' %}" role="button">Customers</a>
                                 </p>
                 </div>
         
         </div>
+        {% else %}
+        <div class="col-md-8">
+            <div class="jumbotron text-center">
+                            <h2 class="display-3">You are not logged in.</h2><br><br>
+                            <h4 class="display-5">Please click link below to log in.</h4>
+                            <br>
+                            
+                            <p class="lead text-center">
+                                <br>
+                                    <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
+                                    <br><br>
+                            </p>
+            </div>
+    
+        </div>
+        
+        {% endif %}
+
 
 
         <div class="col-md-4">

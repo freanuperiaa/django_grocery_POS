@@ -1,10 +1,11 @@
 Django-Grocery-POS
 functionalities of this system:
 1.) Serve as an inventory system
-2.) Enables empoyees to add and edit (only superuser can delete)
+2.) Enables empoyees to add and edit products (only superuser can delete)
 3.) Have an account for each employee, with information
 4.) Employees can start a transaction, and every transaction can be ascribed to him
-5.) For each transaction, it will be linked to an employee (NOT NULL)
+5.) Customer model
+6.) For each transaction, it will be linked to an employee (NOT NULL)
                           and to a customer (if customer chooses so)
 
 tables to be added:
@@ -15,5 +16,6 @@ tables to be added:
 
 
 additional notes:
-    - "products" & "add product" and "customers" & add customers should be merged as one
-                to reduce tabs on the nav bar
+    - i just finished fixing the user.is_autenticated issues
+    - Next step is to add the "Add Transaction" functionality.
+    - So far so good!
