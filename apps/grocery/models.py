@@ -1,7 +1,7 @@
 from django.db import models
 from django.shortcuts import reverse
+from django.conf import settings
 
-# Create your models here.
 
 class Category(models.Model):
     name = models.CharField(max_length=30,db_index=True)
@@ -15,16 +15,13 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-    #def get_absolute_url(self):
-    #   return reverse(' {% address of lists of categories %} ', args=[self.slug])
-
 
 class Product(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.CharField(max_length=100, unique=True)
     category = models.ForeignKey(
         'Category',
-        on_delete = models.CASCADE,
+        on_delete=models.CASCADE,
     )
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -38,21 +35,22 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-        
     def get_absolute_url(self):
-       return reverse('products_detail', args=[self.slug])
+        return reverse('products_detail', args=[self.slug])
+
 
 MEMBERSHIP = (
-    ('Plt','Platinum'),
-    ('Gold','Gold'),
-    ('Silver','Silver'),
+    ('Plt', 'Platinum'),
+    ('Gold', 'Gold'),
+    ('Silver', 'Silver'),
 )
 GENDER = (
-        ('M','male'),
-        ('F','female'),
-        ('NONB','non-binary'),
-        ('PNS','prefer not to say'),
+        ('M', 'male'),
+        ('F', 'female'),
+        ('NONB', 'non-binary'),
+        ('PNS', 'prefer not to say'),
 )
+
 
 class Customer(models.Model):
     first_name = models.CharField(max_length=50)
@@ -61,7 +59,7 @@ class Customer(models.Model):
     gender = models.CharField(
         max_length=30,
         blank=True,
-        choices = GENDER
+        choices=GENDER
     )
     mem_type = models.CharField(max_length=30, choices=MEMBERSHIP)
     trxn_made = models.PositiveIntegerField(default=0)

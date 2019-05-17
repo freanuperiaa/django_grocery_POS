@@ -20,6 +20,7 @@ class CustomUserCreationForm(UserCreationForm):
             'username',
         )
 
+
 class CustomUserChangeForm(UserChangeForm):
 
     class Meta:

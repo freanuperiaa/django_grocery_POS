@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.base import View
 
 from .models import Product, Customer
+from .forms import ProductsListSearchForm
 
 
 class HomePageView(ListView):
@@ -23,10 +24,26 @@ class HomePageView(ListView):
 
 class ProductsListView(ListView):
     template_name = "grocery/products_list.html"
+    name = None
+
+    def post(self, request):
+        form = ProductsListSearchForm(self.request.POST or None)
+        if form.is_valid():
+            self.name = form.cleaned_data['name']
+        self.object_list = self.get_queryset()
+        return self.render_to_response(self.get_context_data(object_list=self.object_list))
 
     def get_queryset(self):
-        query_set = Product.objects.order_by('name')
+        if self.name is not None:
+            query_set = Product.objects.filter(name__icontains=self.name)
+        else:
+            query_set = Product.objects.all().order_by('name')
         return query_set
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = ProductsListSearchForm()
+        return context
 
 
 class ProductsDetailView(View):
@@ -76,7 +93,7 @@ class CustomersCreateView(CreateView):
         'trxn_made', 'mem_type'
     ]
 
-    def form_valid(self,form):
+    def form_valid(self, form):
         obj = form.save(commit=False)
         obj.mem_date = timezone.now()
         obj.save()

@@ -1,12 +1,25 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
    
     {% if user.is_authenticated %}
-        <div class="row">
-            <div class="col-md-12">
-                <a class="btn btn-info btn-lg prodlist-addbtn" href="{% url 'create_product' %}">Add Product</a>
-            </div>
+        <div class="row mb-4">
+        <div class="col-md-8">
+            <form method="POST" action="{% url 'products_list' %}">
+                {% csrf_token %}
+                <div class="form-row form-inline">
+                    <div class="form-group col-md-5 offset-md-3">
+                        {{ search_form.name|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-4 ">
+                        <button type="submit" value="search" class="btn btn-info">search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <a class="btn btn-info " href="{% url 'create_product' %}">Add Product</a>
+        </div>
         </div>
     {% else %}
         &nbsp;
