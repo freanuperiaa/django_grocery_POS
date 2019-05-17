@@ -1,5 +1,7 @@
 Django==2.2.1
 django-crispy-forms==1.7.2
+django-extra-views==0.12.0
 pkg-resources==0.0.0
 pytz==2019.1
+six==1.12.0
 sqlparse==0.3.0
